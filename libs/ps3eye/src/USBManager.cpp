@@ -1,7 +1,12 @@
 // From: https://github.com/inspirit/PS3EYEDriver/
 
+
 #include "USBManager.h"
 #include <iostream>
+#include <algorithm>
+
+#undef min
+#undef max
 
 
 bool URBDesc::handleEvents()
