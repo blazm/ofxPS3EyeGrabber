@@ -17,9 +17,9 @@
 
 
 #if defined(DEBUG)
-#define debug(x...) fprintf(stdout,x)
+#define debug(x, ...) fprintf(stdout,x)
 #else
-#define debug(x...)
+#define debug(x, ...)
 #endif
 
 
