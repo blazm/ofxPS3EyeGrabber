@@ -1,6 +1,6 @@
 // =============================================================================
 //
-// Copyright (c) 2014-2016 Christopher Baker <http://christopherbaker.net>
+// Copyright (c) 2014 Christopher Baker <http://christopherbaker.net>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,13 @@ void ofApp::setup()
 {
     ofSetVerticalSync(false);
 
-	camWidth = 320;
-	camHeight = 240;
-    camFrameRate = 60;
+	camWidth = 640;
+	camHeight = 480;
+    camFrameRate = 70;
 
     //we can now get back a list of devices.
-    std::vector<ofVideoDevice> devices = ofxPS3EyeGrabber().listDevices();
+	ofxPS3EyeGrabber grabber;
+    std::vector<ofVideoDevice> devices = grabber.listDevices();
 
     for(std::size_t i = 0; i < devices.size(); ++i)
     {
@@ -78,7 +79,7 @@ void ofApp::update()
 
         if (videoGrabbers[i]->isFrameNew())
         {
-            videoTextures[i].loadData(videoGrabbers[i]->getPixels());
+			videoTextures[i].loadData(videoGrabbers[i]->getPixels(), videoGrabbers[i]->getWidth(), videoGrabbers[i]->getHeight(), GL_RGBA);
         }
     }
 }
@@ -116,5 +117,14 @@ void ofApp::draw()
         {
             x += camWidth;
         }
+    }
+}
+
+void ofApp::exit() {
+	
+	for(std::size_t i = 0; i < videoGrabbers.size(); ++i)
+    {
+		videoGrabbers[i]->stopThread();
+		videoGrabbers[i]->close();
     }
 }

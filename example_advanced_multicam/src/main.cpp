@@ -28,10 +28,6 @@
 
 int main()
 {
-	ofGLWindowSettings settings;
-	settings.setGLVersion(3, 2);
-	settings.width = 1024;
-	settings.height = 768;
-	ofCreateWindow(settings);
-	ofRunApp(std::make_shared<ofApp>());
+    ofSetupOpenGL(320 * 3, 240, OF_WINDOW);
+    ofRunApp(new ofApp());
 }
