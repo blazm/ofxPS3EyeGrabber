@@ -1,21 +1,15 @@
 docs/html
 docs/tagfile.xml
-docs/*.tag
 
 raw/
-
-Project.xcconfig
-*.xcodeproj
-*.plist
-
-*.sln
-*.vcxproj
-*.vcxproj.filters
-icon.rc
 
 *.mode1v3
 
 # xcode
+openFrameworks-Info.plist
+Project.xcconfig
+*.xcodeproj
+
 *.pbxuser
 *.perspectivev3
 xcuserdata
@@ -185,3 +179,6 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# include *.lib
+!*.lib
